@@ -1,17 +1,12 @@
 #!/usr/bin/env perl
 
-
 #
 # Script to hide random characters with underscores
 #
 
-
 # TODO: instead of going character-by-character, hide entire word tokens
 
-# perl /Users/hmdcadministrator/tmp/Script_to_hide_random_characters_in_underscores._.pl
-
 use strict;
-use Data::Dumper;
 use List::Util qw(shuffle);
 
 # Usage:
@@ -42,8 +37,6 @@ print "\noffset = $offset\n\n";
 splice @random_number_seq, $offset;
 
 my %hash = map { $_ => 1 } @random_number_seq;
-
-# print Dumper @random_number_seq;
 
 my $i = 0;
 while ($file_content =~ /(.|\n|\r)/g) {
