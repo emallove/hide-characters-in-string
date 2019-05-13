@@ -4,7 +4,11 @@
 # Script to hide random characters with underscores
 #
 
-# TODO: instead of going character-by-character, hide entire word tokens
+# TODO:
+#   * instead of going character-by-character, hide entire word tokens
+#   * Integrate with parts-of-speech (POS) database for smarter hiding,
+#      e.g., hide all but the rare words, hide all but the nouns, verbs,
+#      adjectives, proper nouns, etc.
 
 use strict;
 use List::Util qw(shuffle);
@@ -40,7 +44,7 @@ my %hash = map { $_ => 1 } @random_number_seq;
 
 my $i = 0;
 while ($file_content =~ /(.|\n|\r)/g) {
-    if (($hash{$i}) and ($& !~ /\s/)) {
+    if (($hash{$i}) and ($& =~ /\w/)) {
       print "_";
     } else {
       print "$&";
